@@ -1,5 +1,7 @@
 <?
   session_start();
+  //Require add classes function script
+  require_once('scripts/add_Classes.php');
 ?>
 
 
@@ -167,7 +169,7 @@
             <h2 class="section-title-underline mb-3">
               <span class="mb-3">Add Classes</span>
             </h2>
-            <form action="" method="POST">
+            <form action="scripts/add_Classes.php" method="POST">
 
               <p class="form_p text-left mt-3 mb-0">Enter course alpha ID</p>
               <input class="col-12" type="text" name="courseAlpha" id="courseAlpha" placeholder="Ex: CIT, DFIA, CS" autocomplete="off" required="required">
