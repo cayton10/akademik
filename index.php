@@ -1,8 +1,19 @@
 <?
   session_start();
   //Require add classes function script
-  $_SESSION['session'] = 1;
-  require_once('scripts/add_Classes.php');
+  print_r($_SESSION['classes']);
+  echo "<br />";
+  $keys = array_keys($_SESSION['classes']);
+  
+  for ($i=0; $i < $_SESSION['classes'][$i]; $i++) { 
+    foreach($_SESSION['classes'][$i] as $key=>$value){
+      echo "{$key} => {$value} <br /> ";
+    }
+  }
+
+  
+  
+
 ?>
 
 
@@ -188,7 +199,7 @@
               <input class="col-12" type="text" maxlength="1" name="courseGrade" id="courseGrade" placeholder="Ex: A through F" autocomplete="off">
               <small id="gradesHelp" class="text-left form-text text-muted">Only enter grades for classes taken</small>
 
-              <input type="submit" class="btn btn-primary px-4 rounded-0 my-3" value="Add Class">
+              <input type="submit" class="btn btn-primary px-4 rounded-0 my-3" value="Add Class" name="submit">
 
             </form>
           </div>
