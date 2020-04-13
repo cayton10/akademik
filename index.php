@@ -218,16 +218,13 @@
             </div>
 
             <? 
-              echo print_Classes($_SESSION['classes']);
-              ?>
-
-            <div class="row text-center">
-              <div class="col-2"><h5>Course</h5></div>
-              <div class="col-4"><h5>Description</h5></div>
-              <div class="col-2"><h5>Credit Hours</h5></div>
-              <div class="col-2"><h5>Grade</h5></div>
-              <div class="col-2"><h5>Update</h5></div>
-            </div>
+              //If class input counter is < 1, tell user to add classes
+              if ($_SESSION['count'] < 1) {
+                echo "<h3 class='text-left'>Please enter class information to populate cirriculum table.</h3>";
+              }
+              //Call print_Classes function
+                echo print_Classes($_SESSION['classes']);
+            ?>
             
 
       

@@ -6,7 +6,7 @@
         //Control flow for appropriate operation
         if($_SESSION['count'] < 1){
             //If no submissions, tell user to add classes
-            echo "<h3>Please add class information to populate cirriculum table.</h3>";
+            return;
         } else {
             //Populate table headers
             $headers = array_keys($_SESSION['classes'][0]);
@@ -24,7 +24,7 @@
             // finish our thead and start our tbody
             $output .= "</tr></thead></table>";
 
-            echo $output;
+            
 
 
             //Access SESSION variable array
@@ -39,6 +39,8 @@
             }
         }
     }
+
+    return $output;
 }
 
 session_destroy();
