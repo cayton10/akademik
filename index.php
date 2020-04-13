@@ -1,6 +1,7 @@
 <?
   session_start();
   //Require add classes function script
+  $_SESSION['session'] = 1;
   require_once('scripts/add_Classes.php');
 ?>
 
