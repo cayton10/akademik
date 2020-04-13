@@ -26,3 +26,7 @@ html {
     font-weight: bold;
     margin-top: 4px;
 }
+
+table {
+    border: 2px solid black;
+}

@@ -1,19 +1,17 @@
 <?
   session_start();
   //Require add classes function script
-  print_r($_SESSION['classes']);
+
+  //Set session variable to count how many classes have been added
+  $_SESSION['count'];
   echo "<br />";
   $keys = array_keys($_SESSION['classes']);
-  
-  for ($i=0; $i < $_SESSION['classes'][$i]; $i++) { 
-    foreach($_SESSION['classes'][$i] as $key=>$value){
-      echo "{$key} => {$value} <br /> ";
-    }
-  }
 
-  
-  
+  echo $_SESSION['count'];
 
+  print_r($_SESSION['classes']);
+
+  require_once('scripts/print_Classes.php');
 ?>
 
 
@@ -218,6 +216,10 @@
                 </h2>
               </div>
             </div>
+
+            <? 
+              echo print_Classes($_SESSION['classes']);
+              ?>
 
             <div class="row text-center">
               <div class="col-2"><h5>Course</h5></div>
