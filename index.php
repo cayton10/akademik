@@ -1,17 +1,15 @@
 <?
+  //Start session
   session_start();
-  //Require add classes function script
 
   //Set session variable to count how many classes have been added
   $_SESSION['count'];
-  echo "<br />";
   $keys = array_keys($_SESSION['classes']);
-
-  echo $_SESSION['count'];
-
   print_r($_SESSION['classes']);
-
+  //Print classes function require_once to include function
   require_once('scripts/print_Classes.php');
+
+  
 ?>
 
 
@@ -193,10 +191,6 @@
               <p class="form_p text-left mt-3 mb-0">Enter credit hours</p>
               <input class="col-12" min="1" max="5" step="1" type="number" name="courseHours" id="courseHours" placeholder="Ex: 3" autocomplete="off" required="required">
 
-              <p class="form_p text-left mt-3 mb-0"><span id="optional">Optional:</span> Enter course grade</p>
-              <input class="col-12" type="text" maxlength="1" name="courseGrade" id="courseGrade" placeholder="Ex: A through F" autocomplete="off">
-              <small id="gradesHelp" class="text-left form-text text-muted">Only enter grades for classes taken</small>
-
               <input type="submit" class="btn btn-primary px-4 rounded-0 my-3" value="Add Class" name="submit">
 
             </form>
@@ -225,36 +219,16 @@
               //Call print_Classes function
                 echo print_Classes($_SESSION['classes']);
             ?>
-            
 
-      
           </div>
-        </div>
-
-        
-        
+        </div>  
       </div>
     </div>
 
     
 
 
-    <div class="section-bg style-1" style="background-image: url('images/about_1.jpg');">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <h2 class="section-title-underline style-2">
-              <span>About Our University</span>
-            </h2>
-          </div>
-          <div class="col-lg-8">
-            <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem nesciunt quaerat ad reiciendis perferendis voluptate fugiat sunt fuga error totam.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus assumenda omnis tempora ullam alias amet eveniet voluptas, incidunt quasi aut officiis porro ad, expedita saepe necessitatibus rem debitis architecto dolore? Nam omnis sapiente placeat blanditiis voluptas dignissimos, itaque fugit a laudantium adipisci dolorem enim ipsum cum molestias? Quod quae molestias modi fugiat quisquam. Eligendi recusandae officiis debitis quas beatae aliquam?</p>
-            <p><a href="#">Read more</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
     <!-- // 05 - Block -->
   <div class="site-section">
@@ -262,7 +236,7 @@
         <div class="row mb-5">
           <div class="col-lg-4">
             <h2 class="section-title-underline">
-              <span>Testimonials</span>
+              <a href="scripts/killSession.php"><span>Testimonials</span></a>
             </h2>
           </div>
         </div>

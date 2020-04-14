@@ -27,6 +27,7 @@ html {
     margin-top: 4px;
 }
 
-table {
-    border: 2px solid black;
+tr {
+    border-left: 0.5px solid grey;
+    border-right: 0.5px solid grey;
 }
