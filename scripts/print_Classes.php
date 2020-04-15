@@ -10,7 +10,7 @@
         } else {
             //Populate table headers
             $headers = array_keys($array[0]);
-            $output = "<table class='table'><thead class='thead-dark'><tr class='row text-center'>";
+            $output = "<table class='table table-hover'><thead class='thead-dark'><tr class='row text-center'>";
             //oreach header output
             foreach ($headers as $key => $value) {
                 //Format header row column width
@@ -38,7 +38,7 @@
                         //Select dropdown needs to be nested in <form> to resubmit grade info
                         $output .= "<td class='col-2 text-left'>
                                         <form action='scripts/update_Grade.php' method='POST'>
-                                            <select name='courseGrade' class='grade_select'>
+                                            <select name='courseGrade[]' class='grade_select'>
                                                 <option value='' disabled selected>N/A</option>
                                                 <option value='A " . $_SESSION['classes'][$i]['Class'] ."'>A</option>
                                                 <option value='B " . $_SESSION['classes'][$i]['Class'] ."'>B</option>

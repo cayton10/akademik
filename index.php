@@ -541,6 +541,7 @@
   <script src="js/jquery.fancybox.min.js"></script>
   <script src="js/jquery.sticky.js"></script>
   <script src="js/jquery.mb.YTPlayer.min.js"></script>
+  <script src="js/akademik.js"></script>
 
 
 
