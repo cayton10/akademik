@@ -11,9 +11,9 @@
             //Populate table headers
             $headers = array_keys($array[0]);
             $output = "<table class='table'><thead class='thead-dark'><tr class='row text-center'>";
-            //foreach header output
+            //oreach header output
             foreach ($headers as $key => $value) {
-                //format header row column width
+                //Format header row column width
                 if ($value != 'Description') {
                     $output .= "<th class='col-2 text-left'>" . $value . "</th>";
                 }  else {
@@ -29,6 +29,7 @@
             $output .= "<tr class='row text-center'>";
                 //Multidimensional array requires nested for loops 
                 foreach($array[$i] as $key=>$value){
+                    
                     //Control flow to format description field same as description header
                     if ($key == 'Description') {
                         $output .= "<td class='col-6 text-left'>" . $value . "</td>";
@@ -36,16 +37,16 @@
                     } else if ($key == 'Grade' && $value == ''){
                         //Select dropdown needs to be nested in <form> to resubmit grade info
                         $output .= "<td class='col-2 text-left'>
-                                        <form action='scripts/update_Grades.php' method='POST'>
+                                        <form action='scripts/update_Grade.php' method='POST'>
                                             <select name='courseGrade' class='grade_select'>
                                                 <option value='' disabled selected>N/A</option>
-                                                <option value='A'>A</option>
-                                                <option value='B'>B</option>
-                                                <option value='C'>C</option>
-                                                <option value='D'>D</option>
-                                                <option value='F'>F</option>
+                                                <option value='A " . $_SESSION['classes'][$i]['Class'] ."'>A</option>
+                                                <option value='B " . $_SESSION['classes'][$i]['Class'] ."'>B</option>
+                                                <option value='C " . $_SESSION['classes'][$i]['Class'] ."'>C</option>
+                                                <option value='D " . $_SESSION['classes'][$i]['Class'] ."'>D</option>
+                                                <option value='F " . $_SESSION['classes'][$i]['Class'] ."'>F</option>
                                         </form>
-                                    </td>";
+                                    </td>";           
                     } else {
                         //Format output for all other values in the array
                 $output .= "<td class='col-2 text-left'>" . $value . "</td>";

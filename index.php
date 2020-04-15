@@ -6,9 +6,18 @@
   $_SESSION['count'];
   $keys = array_keys($_SESSION['classes']);
   print_r($_SESSION['classes']);
+  echo $_SESSION['classes']['Class'];
   //Print classes function require_once to include function
   require_once('scripts/print_Classes.php');
 
+  echo $_SESSION['classes'][0]['Class'];
+
+  //foreach statement to call print_Classes function upon grade update
+  foreach ($_SESSION['classes'] as $key => $value) {
+    if(isset($grade)){
+      echo print_Classes($_SESSION['classes']);
+    }
+  }
   
 ?>
 
@@ -191,7 +200,7 @@
               <p class="form_p text-left mt-3 mb-0">Enter credit hours</p>
               <input class="col-12" min="1" max="5" step="1" type="number" name="courseHours" id="courseHours" placeholder="Ex: 3" autocomplete="off" required="required">
 
-              <input type="submit" class="btn btn-primary px-4 rounded-0 my-3" value="Add Class" name="submit">
+              <input type="submit" class="btn btn-primary px-4 rounded-0 my-3" value="add_Class" name="submit">
 
             </form>
           </div>
