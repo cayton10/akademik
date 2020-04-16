@@ -6,4 +6,5 @@ $(document).ready(function() {
     var hash = window.location.hash;
     //If hash exists && starts with "#scroll:"
     $('html, body').animate({ scrollTop: $(hash).offset().top});
+
 });

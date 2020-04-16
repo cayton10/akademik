@@ -52,12 +52,7 @@
                     {
                         $gradePoints = 0;
                     }  
-                }
-                else
-                {
-                    return;
-                    
-                }           
+                }         
             }
 
             //Update pertinent values for GPA calculation
@@ -74,4 +69,6 @@
             //Set cookie with name 'gpa', value of $GPA and expires in 3 Hours
             setcookie('gpa', $GPA, time() + 60 * 60 * 3, '/');            
         }
+        //Return from function after reading all classes from array
+        return;
     }

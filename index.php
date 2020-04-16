@@ -62,9 +62,9 @@
           <!-- SOCIAL LINKS -->
           <div class="ml-auto">
             <div class="social-wrap">
-              <a href="#https://github.com/cayton10" target='_blank'><span class="icon-github"></span></a>
-              <a href="#https://twitter.com/BenCayton" target='_blank'><span class="icon-twitter"></span></a>
-              <a href="#https://www.linkedin.com/in/bencayton/" target='_blank'><span class="icon-linkedin"></span></a>
+              <a href="https://github.com/cayton10" target='_blank'><span class="icon-github"></span></a>
+              <a href="https://twitter.com/BenCayton" target='_blank'><span class="icon-twitter"></span></a>
+              <a href="https://www.linkedin.com/in/bencayton/" target='_blank'><span class="icon-linkedin"></span></a>
             </div>
           </div>
          
@@ -226,7 +226,7 @@
         <div class="row mb-5">
           <div class="col text-center">
             <h2 class="section-title-underline">
-              <a href="scripts/killSession.php"><span>Calculated GPA</span></a>
+              <span>Calculated GPA</span>
             </h2>
             <?php
              //Control flow for GPA output
