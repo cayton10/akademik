@@ -1,23 +1,17 @@
 <?
   //Start session
   session_start();
-
   //Set session variable to count how many classes have been added
   $_SESSION['count'];
   $keys = array_keys($_SESSION['classes']);
-  print_r($_SESSION['classes']);
-  echo $_SESSION['classes']['Class'];
+  //setCookie control flow
+  if(!isset($_COOKIE['gpa']) && $_COOKIE['gpa'] != $_SESSION['gpa'])
+  {
+    header('scripts/setCookie.php');
+  }
   //Print classes function require_once to include function
   require_once('scripts/print_Classes.php');
-
-  echo $_SESSION['classes'][0]['Class'];
-
-  //foreach statement to call print_Classes function upon grade update
-  foreach ($_SESSION['classes'] as $key => $value) {
-    if(isset($grade)){
-      echo print_Classes($_SESSION['classes']);
-    }
-  }
+  require_once('scripts/gpa_Calc.php');
   
 ?>
 
@@ -228,25 +222,31 @@
               //Call print_Classes function
                 echo print_Classes($_SESSION['classes']);
             ?>
-
           </div>
         </div>  
       </div>
     </div>
 
-    
-
-
-    
 
     <!-- // 05 - Block -->
   <div class="site-section">
       <div class="container">
         <div class="row mb-5">
-          <div class="col-lg-4">
+          <div class="col-lg-6 text-center">
             <h2 class="section-title-underline">
-              <a href="scripts/killSession.php"><span>Testimonials</span></a>
+              <a href="scripts/killSession.php"><span>Calculated GPA</span></a>
             </h2>
+            <?php
+             //foreach statement to call print_Classes function upon grade update
+              foreach ($_SESSION['classes'] as $key => $value) {
+                if($key == 'Grade' && $value != ''){
+                  echo calculate_GPA($_SESSION['classes']);
+                }
+              }
+
+              echo "<h3>Your calculated grade point average: <span class='gpa'" . $_COOKIE['gpa'] . "</span></h3><br />";
+              
+            ?>
           </div>
         </div>
 
@@ -541,7 +541,6 @@
   <script src="js/jquery.fancybox.min.js"></script>
   <script src="js/jquery.sticky.js"></script>
   <script src="js/jquery.mb.YTPlayer.min.js"></script>
-  <script src="js/akademik.js"></script>
 
 
 

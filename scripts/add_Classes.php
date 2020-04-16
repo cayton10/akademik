@@ -12,10 +12,8 @@
     $class = array("Class"=> $id . $num, "Description" => $name, "Hours" => $hours, "Grade" => $grade);
     //Populate multidimensional classes array with each input
     $_SESSION['classes'][] = $class;
-    //Redirect back to index
-    header('location:../index.php');
     //Increment session variable every time the SESSION array is loaded
     $_SESSION['count']++;
-
-    
+    //Redirect back to index
+    header('location:../index.php');
 ?>
