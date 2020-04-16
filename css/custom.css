@@ -42,3 +42,11 @@ tr {
     font-style: normal;
     color: black;
 }
+
+#gpa {
+    color: #51be78;
+}
+
+.gpa{
+    margin-top: 40px;
+}

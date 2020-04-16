@@ -1,9 +1,11 @@
 <?
-    session_start();
-
+    
+    
     function calculate_GPA($array)
     {
-        require_once('setCookie.php');
+     
+        session_start();
+        
 
         //Declare appropriate variables for scope
         $hours = 0;
@@ -53,17 +55,19 @@
                 }
                 else
                 {
-                    return;  
+                    return;
+                    
                 }           
             }
 
             //Update pertinent values for GPA calculation
             $totalGradePoints += $gradePoints;
+            $_SESSION['totalGradePoints'] = $totalGradePoints;
             $totalHours += $hours;
+            $_SESSION['totalHours'] = $totalHours;
             $GPA = $totalGradePoints / $totalHours;
-            number_format($GPA, 2);
-            //Conver GPA val from float to string
-            $GPA = strval($GPA);
+            $GPA = number_format($GPA, 2);
             $_SESSION['gpa'] = $GPA;
+            setcookie('gpa', $GPA, time() + 86400, '/');            
         }
     }

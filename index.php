@@ -4,15 +4,12 @@
   //Set session variable to count how many classes have been added
   $_SESSION['count'];
   $keys = array_keys($_SESSION['classes']);
-  //setCookie control flow
-  if(!isset($_COOKIE['gpa']) && $_COOKIE['gpa'] != $_SESSION['gpa'])
-  {
-    header('scripts/setCookie.php');
-  }
+  //setcookie('gpa', $_SESSION['gpa'], time() + 60 * 10);
+  //Control flow for setting cookie
+  
   //Print classes function require_once to include function
   require_once('scripts/print_Classes.php');
   require_once('scripts/gpa_Calc.php');
-  
 ?>
 
 
@@ -71,9 +68,6 @@
               <a href="#"><span class="icon-github"></span></a>
               <a href="#"><span class="icon-twitter"></span></a>
               <a href="#"><span class="icon-linkedin"></span></a>
-
-              <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black"><span
-                class="icon-menu h3"></span></a>
             </div>
           </div>
          
@@ -162,7 +156,7 @@
               <div class="feature-1-content">
                 <h2>GPA Calculator</h2>
                 <p>Your abysmal GPA will be calculated for you. Thunderdome awaits.</p>
-                <p><a href="#gpa" class="btn btn-primary px-4 rounded-0">View GPA</a></p>
+                <p><a href="#gradepoint" class="btn btn-primary px-4 rounded-0">View GPA</a></p>
               </div>
             </div> 
           </div>
@@ -222,6 +216,7 @@
               //Call print_Classes function
                 echo print_Classes($_SESSION['classes']);
             ?>
+
           </div>
         </div>  
       </div>
@@ -230,279 +225,39 @@
 
     <!-- // 05 - Block -->
   <div class="site-section">
-      <div class="container">
+      <div class="container" id='gradepoint'>
         <div class="row mb-5">
-          <div class="col-lg-6 text-center">
+          <div class="col text-center">
             <h2 class="section-title-underline">
               <a href="scripts/killSession.php"><span>Calculated GPA</span></a>
             </h2>
             <?php
-             //foreach statement to call print_Classes function upon grade update
-              foreach ($_SESSION['classes'] as $key => $value) {
-                if($key == 'Grade' && $value != ''){
-                  echo calculate_GPA($_SESSION['classes']);
-                }
+             
+              if(isset($_COOKIE['gpa']))
+              {
+                $indexGPA = $_COOKIE['gpa'];
+                echo "<h3 class='gpa'>Your calculated grade point average: <span id='gpa'>" . $indexGPA . "</span></h3><br />";
+                echo "<h5>Total hours attempted: " . $_SESSION['totalHours'] ."</h5><br />";
+                echo "<h5>Quality points earned: " . $_SESSION['totalGradePoints'] . "</h5><br />";
+                echo "<h2 class='section-title-underline my-5'>
+                <a href='scripts/killSession.php'><span>Clear Classes</span></a>
+              </h2>";
+              } 
+              else 
+              {
+                echo "<h3>Enter grades for each class added to view GPA.</h3>";
               }
-
-              echo "<h3>Your calculated grade point average: <span class='gpa'" . $_COOKIE['gpa'] . "</span></h3><br />";
               
             ?>
           </div>
         </div>
-
-
-        <div class="owl-slide owl-carousel">
-
-          <div class="ftco-testimonial-1">
-            <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-              <img src="images/person_1.jpg" alt="Image" class="img-fluid mr-3">
-              <div>
-                <h3>Allison Holmes</h3>
-                <span>Designer</span>
-              </div>
-            </div>
-            <div>
-              <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!&rdquo;</p>
-            </div>
-          </div>
-
-          <div class="ftco-testimonial-1">
-            <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-              <img src="images/person_2.jpg" alt="Image" class="img-fluid mr-3">
-              <div>
-                <h3>Allison Holmes</h3>
-                <span>Designer</span>
-              </div>
-            </div>
-            <div>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
-            </div>
-          </div>
-
-          <div class="ftco-testimonial-1">
-            <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-              <img src="images/person_4.jpg" alt="Image" class="img-fluid mr-3">
-              <div>
-                <h3>Allison Holmes</h3>
-                <span>Designer</span>
-              </div>
-            </div>
-            <div>
-              <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!&rdquo;</p>
-            </div>
-          </div>
-
-          <div class="ftco-testimonial-1">
-            <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-              <img src="images/person_3.jpg" alt="Image" class="img-fluid mr-3">
-              <div>
-                <h3>Allison Holmes</h3>
-                <span>Designer</span>
-              </div>
-            </div>
-            <div>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
-            </div>
-          </div>
-
-          <div class="ftco-testimonial-1">
-            <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-              <img src="images/person_2.jpg" alt="Image" class="img-fluid mr-3">
-              <div>
-                <h3>Allison Holmes</h3>
-                <span>Designer</span>
-              </div>
-            </div>
-            <div>
-              <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!&rdquo;</p>
-            </div>
-          </div>
-
-          <div class="ftco-testimonial-1">
-            <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
-              <img src="images/person_4.jpg" alt="Image" class="img-fluid mr-3">
-              <div>
-                <h3>Allison Holmes</h3>
-                <span>Designer</span>
-              </div>
-            </div>
-            <div>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
-            </div>
-          </div>
-
-        </div>
-        
       </div>
     </div>
     
-
-    <div class="section-bg style-1" style="background-image: url('images/hero_1.jpg');">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-            <span class="icon flaticon-mortarboard"></span>
-            <h3>Our Philosphy</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea? Dolore, amet reprehenderit.</p>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-            <span class="icon flaticon-school-material"></span>
-            <h3>Academics Principle</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
-              Dolore, amet reprehenderit.</p>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
-            <span class="icon flaticon-library"></span>
-            <h3>Key of Success</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
-              Dolore, amet reprehenderit.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="news-updates">
-      <div class="container">
-         
-        <div class="row">
-          <div class="col-lg-9">
-             <div class="section-heading">
-              <h2 class="text-black">News &amp; Updates</h2>
-              <a href="#">Read All News</a>
-            </div>
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="post-entry-big">
-                  <a href="news-single.html" class="img-link"><img src="images/blog_large_1.jpg" alt="Image" class="img-fluid"></a>
-                  <div class="post-content">
-                    <div class="post-meta"> 
-                      <a href="#">June 6, 2019</a>
-                      <span class="mx-1">/</span>
-                      <a href="#">Admission</a>, <a href="#">Updates</a>
-                    </div>
-                    <h3 class="post-heading"><a href="news-single.html">Campus Camping and Learning Session</a></h3>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="post-entry-big horizontal d-flex mb-4">
-                  <a href="news-single.html" class="img-link mr-4"><img src="images/blog_1.jpg" alt="Image" class="img-fluid"></a>
-                  <div class="post-content">
-                    <div class="post-meta">
-                      <a href="#">June 6, 2019</a>
-                      <span class="mx-1">/</span>
-                      <a href="#">Admission</a>, <a href="#">Updates</a>
-                    </div>
-                    <h3 class="post-heading"><a href="news-single.html">Campus Camping and Learning Session</a></h3>
-                  </div>
-                </div>
-
-                <div class="post-entry-big horizontal d-flex mb-4">
-                  <a href="news-single.html" class="img-link mr-4"><img src="images/blog_2.jpg" alt="Image" class="img-fluid"></a>
-                  <div class="post-content">
-                    <div class="post-meta">
-                      <a href="#">June 6, 2019</a>
-                      <span class="mx-1">/</span>
-                      <a href="#">Admission</a>, <a href="#">Updates</a>
-                    </div>
-                    <h3 class="post-heading"><a href="news-single.html">Campus Camping and Learning Session</a></h3>
-                  </div>
-                </div>
-
-                <div class="post-entry-big horizontal d-flex mb-4">
-                  <a href="news-single.html" class="img-link mr-4"><img src="images/blog_1.jpg" alt="Image" class="img-fluid"></a>
-                  <div class="post-content">
-                    <div class="post-meta">
-                      <a href="#">June 6, 2019</a>
-                      <span class="mx-1">/</span>
-                      <a href="#">Admission</a>, <a href="#">Updates</a>
-                    </div>
-                    <h3 class="post-heading"><a href="news-single.html">Campus Camping and Learning Session</a></h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="section-heading">
-              <h2 class="text-black">Campus Videos</h2>
-              <a href="#">View All Videos</a>
-            </div>
-            <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2">
-              <span class="play">
-                <span class="icon-play"></span>
-              </span>
-              <img src="images/course_5.jpg" alt="Image" class="img-fluid">
-            </a>
-            <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2">
-                <span class="play">
-                  <span class="icon-play"></span>
-                </span>
-                <img src="images/course_5.jpg" alt="Image" class="img-fluid">
-              </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="site-section ftco-subscribe-1" style="background-image: url('images/bg_1.jpg')">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-7">
-            <h2>Subscribe to us!</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,</p>
-          </div>
-          <div class="col-lg-5">
-            <form action="" class="d-flex">
-              <input type="text" class="rounded form-control mr-2 py-3" placeholder="Enter your email">
-              <button class="btn btn-primary rounded py-3 px-4" type="submit">Send</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div> 
-
 
     <div class="footer">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3">
-            <p class="mb-4"><img src="images/logo.png" alt="Image" class="img-fluid"></p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae nemo minima qui dolor, iusto iure.</p>  
-            <p><a href="#">Learn More</a></p>
-          </div>
-          <div class="col-lg-3">
-            <h3 class="footer-heading"><span>Our Campus</span></h3>
-            <ul class="list-unstyled">
-                <li><a href="#">Acedemic</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Our Interns</a></li>
-                <li><a href="#">Our Leadership</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Human Resources</a></li>
-            </ul>
-          </div>
-          <div class="col-lg-3">
-              <h3 class="footer-heading"><span>Our Courses</span></h3>
-              <ul class="list-unstyled">
-                  <li><a href="#">Math</a></li>
-                  <li><a href="#">Science &amp; Engineering</a></li>
-                  <li><a href="#">Arts &amp; Humanities</a></li>
-                  <li><a href="#">Economics &amp; Finance</a></li>
-                  <li><a href="#">Business Administration</a></li>
-                  <li><a href="#">Computer Science</a></li>
-              </ul>
-          </div>
-          <div class="col-lg-3">
-              <h3 class="footer-heading"><span>Contact</span></h3>
-              <ul class="list-unstyled">
-                  <li><a href="#">Help Center</a></li>
-                  <li><a href="#">Support Community</a></li>
-                  <li><a href="#">Press</a></li>
-                  <li><a href="#">Share Your Story</a></li>
-                  <li><a href="#">Our Supporters</a></li>
-              </ul>
-          </div>
         </div>
 
         <div class="row">
