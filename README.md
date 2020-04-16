@@ -1,6 +1,6 @@
 # akademik
 
-Akademik is the second php homework project for CIT 313: Web Programming II. This project emphasizes the use of arrays, PHP session variables, and functions. 
+Akademik is the second php homework project for CIT 313: Web Programming II. This project emphasizes the use of arrays, PHP session variables, and functions. You can check out the final product <a href='http://cit.marshall.edu/cit313/cayton10/PHP/HW2/akademik/index.php' target='_blank'>here</a>. The application is stored on a student project server, so this may go down at any time. If it does, let me know and I'll post it somewhere else.  
 
 ## Project Description
 
