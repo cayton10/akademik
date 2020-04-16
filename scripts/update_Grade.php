@@ -1,7 +1,7 @@
 <?php   
     session_start();
     //From print_Classes.php 
-    //Require_once
+    //Require_once to call GPA calculation function
     require_once('gpa_Calc.php'); 
     $grades = ($_POST['courseGrade']);
     //Foreach to access $grades array
@@ -27,7 +27,7 @@
     //Call calculate gpa function to do so and set cookie
     calculate_GPA($_SESSION['classes']);
     //After calling function, redirect to index
-    header('location:../index.php');
-    exit;
+    header('location:../index.php#view');
+
 
     ?>

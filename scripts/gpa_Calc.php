@@ -62,12 +62,16 @@
 
             //Update pertinent values for GPA calculation
             $totalGradePoints += $gradePoints;
+            //Store quality points earned for output in GPA section
             $_SESSION['totalGradePoints'] = $totalGradePoints;
             $totalHours += $hours;
+            //Store total hours taken for output in GPA section
             $_SESSION['totalHours'] = $totalHours;
+            //Calculate GPA
             $GPA = $totalGradePoints / $totalHours;
+            //Format GPA output
             $GPA = number_format($GPA, 2);
-            $_SESSION['gpa'] = $GPA;
-            setcookie('gpa', $GPA, time() + 86400, '/');            
+            //Set cookie with name 'gpa', value of $GPA and expires in 3 Hours
+            setcookie('gpa', $GPA, time() + 60 * 60 * 3, '/');            
         }
     }

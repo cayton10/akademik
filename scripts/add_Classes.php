@@ -15,5 +15,5 @@
     //Increment session variable every time the SESSION array is loaded
     $_SESSION['count']++;
     //Redirect back to index
-    header('location:../index.php');
+    header('location:../index.php#add');
 ?>

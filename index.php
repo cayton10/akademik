@@ -4,12 +4,9 @@
   //Set session variable to count how many classes have been added
   $_SESSION['count'];
   $keys = array_keys($_SESSION['classes']);
-  //setcookie('gpa', $_SESSION['gpa'], time() + 60 * 10);
-  //Control flow for setting cookie
   
   //Print classes function require_once to include function
   require_once('scripts/print_Classes.php');
-  require_once('scripts/gpa_Calc.php');
 ?>
 
 
@@ -65,9 +62,9 @@
           <!-- SOCIAL LINKS -->
           <div class="ml-auto">
             <div class="social-wrap">
-              <a href="#"><span class="icon-github"></span></a>
-              <a href="#"><span class="icon-twitter"></span></a>
-              <a href="#"><span class="icon-linkedin"></span></a>
+              <a href="#https://github.com/cayton10" target='_blank'><span class="icon-github"></span></a>
+              <a href="#https://twitter.com/BenCayton" target='_blank'><span class="icon-twitter"></span></a>
+              <a href="#https://www.linkedin.com/in/bencayton/" target='_blank'><span class="icon-linkedin"></span></a>
             </div>
           </div>
          
@@ -169,7 +166,7 @@
       <div class="container">
 
   <!-- CLASS ADD SECTION -->
-        <div class="row mb-5 justify-content-center text-center" id="add">
+        <div class="row mb-5 justify-content-center text-center" id="add" href='#add'>
           <div class="col-lg-6 mb-5">
             <h2 class="section-title-underline mb-3">
               <span class="mb-3">Add Classes</span>
@@ -188,7 +185,7 @@
               <p class="form_p text-left mt-3 mb-0">Enter credit hours</p>
               <input class="col-12" min="1" max="5" step="1" type="number" name="courseHours" id="courseHours" placeholder="Ex: 3" autocomplete="off" required="required">
 
-              <input type="submit" class="btn btn-primary px-4 rounded-0 my-3" value="add_Class" name="submit">
+              <input type="submit" class="btn btn-primary px-4 rounded-0 my-3" value="Add Class" name="submit">
 
             </form>
           </div>
@@ -211,7 +208,7 @@
             <? 
               //If class input counter is < 1, tell user to add classes
               if ($_SESSION['count'] < 1) {
-                echo "<h3 class='text-left'>Please enter class information to populate cirriculum table.</h3>";
+                echo "<h3 class='text-center'>Please enter class information to populate cirriculum table.</h3>";
               }
               //Call print_Classes function
                 echo print_Classes($_SESSION['classes']);
@@ -232,9 +229,10 @@
               <a href="scripts/killSession.php"><span>Calculated GPA</span></a>
             </h2>
             <?php
-             
+             //Control flow for GPA output
+             //If gpa cookie is set...
               if(isset($_COOKIE['gpa']))
-              {
+              { //Output all of this fancy information
                 $indexGPA = $_COOKIE['gpa'];
                 echo "<h3 class='gpa'>Your calculated grade point average: <span id='gpa'>" . $indexGPA . "</span></h3><br />";
                 echo "<h5>Total hours attempted: " . $_SESSION['totalHours'] ."</h5><br />";
@@ -242,6 +240,7 @@
                 echo "<h2 class='section-title-underline my-5'>
                 <a href='scripts/killSession.php'><span>Clear Classes</span></a>
               </h2>";
+              //Added link with appropriate label to allow users to reset their class list and progress.
               } 
               else 
               {
@@ -296,11 +295,8 @@
   <script src="js/jquery.fancybox.min.js"></script>
   <script src="js/jquery.sticky.js"></script>
   <script src="js/jquery.mb.YTPlayer.min.js"></script>
-
-
-
-
   <script src="js/main.js"></script>
+  <script src="js/akademik.js"></script>
 
 </body>
 
